@@ -1,9 +1,16 @@
 const { Router } = require("express");
+const { getAlltasks, getTasks, postAlltasks, deleteAlltasks, updateAlltasks } = require('../controllers/task.controllers')
 
 const router = Router();
 
-router.get ('/', (req, res) => {
-    res.send('Hola Mundo esto es el backend')
-})
+router.get ('/tasks/10', getTasks)
+
+router.get ('/tasks', getAlltasks)
+
+router.post ('/tasks', postAlltasks )
+
+router.delete ('/tasks', deleteAlltasks )
+
+router.put ('/tasks', updateAlltasks)
 
 module.exports = router;
