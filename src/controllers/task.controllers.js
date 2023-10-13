@@ -1,7 +1,24 @@
 const pool = require('../db')
 
 const getTasks = async (req, res) => {
-    res.send('retrieving a single tasks');
+    
+    try{
+
+        const {id} = req.params
+    const sinlgeTask = await pool.query('SELECT * FROM task WHERE id = $1', [id])
+    
+
+    if (sinlgeTask.rows.length === 0)
+         return res.status(404).json({
+            message: 'Task not found'
+    })
+    
+    res.json(sinlgeTask.rows[0])
+
+    } catch (error) {
+        console.log(error.message)
+    }
+
 }
 
 const getAlltasks = async (req, res) => {
@@ -27,10 +44,17 @@ const postAlltasks = async (req, res) => {
         res.json({error: error.message});
     }
 }
-const deleteAlltasks = async (req, res) => {
+const deleteTasks = async (req, res) => {
+
+    const{ id } = req.params
+
+    const result = await pool.query('DELETE FROM task WHERE id = $1 RETURNING *', [id])
+
+    console.log(result)
+
     res.send('deleting a task');
 }
-const updateAlltasks = async (req, res) => {
+const updateTasks = async (req, res) => {
     res.send('updating a task');
 }
 
@@ -38,6 +62,6 @@ module.exports = {
     getAlltasks,
     getTasks,
     postAlltasks,
-    deleteAlltasks,
-    updateAlltasks
+    deleteTasks,
+    updateTasks
 }
