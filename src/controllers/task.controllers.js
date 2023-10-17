@@ -28,7 +28,7 @@ const getAlltasks = async (req, res) => {
     res.json(allTask.rows)
 
     } catch (error){
-        res.json({error: error.message});
+        next(error)
     }
 }
 
@@ -41,7 +41,7 @@ const postAlltasks = async (req, res) => {
     res.json(result.rows[0])
 
     } catch (error){
-        res.json({error: error.message});
+        next(error)
     }
 }
 const deleteTasks = async (req, res) => {
@@ -50,12 +50,26 @@ const deleteTasks = async (req, res) => {
 
     const result = await pool.query('DELETE FROM task WHERE id = $1 RETURNING *', [id])
 
-    console.log(result)
+    if (result.rowCount === 0)
+    return res.status(404).json({
+       message: 'Task not found'
+    });
 
-    res.send('deleting a task');
+  return  res.sendStatus(204);
 }
 const updateTasks = async (req, res) => {
-    res.send('updating a task');
+    const{ id } = req.params
+
+    const result = await pool.query('UPDATE FROM task SET title = $1, description =$2 WHERE ID = $3 RETURNING *', [title, description, id])
+    
+    if (result.rowCount === 0)
+        return res.status(404).json({
+        message: 'Task not found'
+        });
+    
+        return res.json(result.rows[0])
+
+    
 }
 
 module.exports = {

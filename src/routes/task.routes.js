@@ -11,6 +11,6 @@ router.post ('/tasks', postAlltasks )
 
 router.delete ('/tasks/:id', deleteTasks )
 
-router.put ('/tasks', updateTasks)
+router.put ('/tasks/:id', updateTasks)
 
 module.exports = router;
