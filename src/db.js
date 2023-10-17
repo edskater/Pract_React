@@ -1,11 +1,12 @@
-const { Pool } = require('pg')
+const { Pool } = require('pg');
+const {db} = require('./conifg')
 
 const pool   = new Pool({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'tasksdb',
-    password: 'Durango97',
-    port: 5432, // el puerto predeterminado de PostgreSQL
+    user: db.user,
+    host: db.host,
+    database: db.database,
+    password: db.password,
+    port: db.port,
 });
 
 module.exports = pool;
