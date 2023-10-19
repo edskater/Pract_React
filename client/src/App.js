@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import TaskList from'./components/Tasklist'
-import TaskForm from "./components/TaskForm";
 import Navbar from './components/Navbar'
 import Footer from "./components/Footer";
+import LogIn from "./components/Login";
+import HOME from "./components/Home_optr_suprv";
 
 export default function App(){
   return(
@@ -10,8 +10,8 @@ export default function App(){
     <Navbar/>
     
       <Routes>
-          <Route path="/" element={<TaskList/>}/>
-          <Route path="/home" element={<TaskForm/>}/>
+          <Route path="/" element={<LogIn/>}/>
+          <Route path="/home" element={<HOME/>}/>
       </Routes>
       
       <Footer/>
