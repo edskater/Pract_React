@@ -13,7 +13,7 @@ import Link from '@mui/material/Link';
 function LogIn() {
   return (
     <Box component="form"  sx={{ '& > :not(style)': { m: 1, width: '55ch', marginBottom: "245px" }, backgroundImage: "url(/Durango.catedral.jpg)", backgroundSize: 'cover', height: '90vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <Card sx={{ margin: "8px", width: "54ch", marginBottom: "100px", borderRadius: "43px", height: "auto", width: '54ch' , minWidth: 275, backgroundColor: 'rgba(255, 255, 255, 0.8)', display: "flex", alignContent: "center", alignItems: "center", flexDirection: "column" }}>
+      <Card sx={{ margin: "8px", marginBottom: "100px", borderRadius: "43px", height: "auto", width: '54ch' , minWidth: 275, backgroundColor: 'rgba(255, 255, 255, 0.8)', display: "flex", alignContent: "center", alignItems: "center", flexDirection: "column" }}>
         <CardContent style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
           <Typography sx={{ fontSize: 34, marginBottom: '50px'}} color="text.secondary" gutterBottom>
             Iniciar Sesión
