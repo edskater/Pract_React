@@ -8,8 +8,10 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Container } from '@mui/material';
+import { useState } from 'react';
 
-/* const HomeOperadorSupervisor = (
+
+ const HomeOperadorSupervisor = (
   <React.Fragment>
   <CssBaseline />
   <Container>
@@ -45,7 +47,7 @@ import { Container } from '@mui/material';
   </Container>
   
 </React.Fragment>
-); */
+); 
 
 const HomeAdmin = (
   <React.Fragment>
@@ -99,10 +101,12 @@ const HomeAdmin = (
 </React.Fragment>
 );
 
+const [userRole, setUserRole] = useState('admin');
 
 export default function HOME(){
   return(
-
-    
+    <div>
+      {userRole === 'admin' ? HomeAdmin : HomeOperadorSupervisor}
+    </div>    
   );
 }
