@@ -7,7 +7,7 @@ function Footer() {
         background: '#AFAFAF',
         bottom: '0',
         width: '100%',
-        height: '73px',
+        height: '113px',
         borderTop: '20px solid #000000',
         color: '#333333',
         textAlign: 'center',
