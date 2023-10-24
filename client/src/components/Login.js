@@ -40,8 +40,8 @@ const Login = () => {
 
 
   return (
-    <Box component="form"  sx={{ '& > :not(style)': { m: 1, width: '55ch', marginBottom: "245px" }, backgroundImage: "url(/Durango.catedral.jpg)", backgroundSize: 'cover', height: '90vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <Card sx={{ margin: "8px", marginBottom: "100px", borderRadius: "43px", height: "auto", width: '54ch' , minWidth: 275, backgroundColor: 'rgba(255, 255, 255, 0.8)', display: "flex", alignContent: "center", alignItems: "center", flexDirection: "column" }}>
+    <Box component="form"  sx={{ '& > :not(style)': { width: '56ch'}, backgroundImage: "url(/Durango.catedral.jpg)", backgroundSize: 'cover', height: '74vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <Card sx={{ margin: "8px", borderRadius: "43px", height: "auto", width: '54ch' , minWidth: 275, backgroundColor: 'rgba(255, 255, 255, 0.8)', display: "flex", alignContent: "center", alignItems: "center", flexDirection: "column" }}>
         <CardContent onSubmit={(e) => onSubmit(e)} style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
           <Typography sx={{ fontSize: 34, marginBottom: '50px'}} color="text.secondary" gutterBottom>
             Iniciar Sesión
@@ -49,7 +49,7 @@ const Login = () => {
           <TextField sx={{ width: "50ch", marginBottom: "50px", borderRadius: '22px'}} onChange={(e) => onChange(e)} value={values.email} id="username" label="Nombre de usuario" variant="outlined" />
           <TextField sx={{ width: "50ch", marginBottom: "50px", borderRadius: '22px'}}  onChange={(e) => onChange(e)} value={values.password} id="password" label="Contraseña" type="password" variant="outlined" />
         </CardContent>
-        <Link href="/home" underline="hover" style={{color: "black", marginBottom: '20px'}}>
+        <Link href="/recuperar-contrasena" underline="hover" style={{color: "black", marginBottom: '20px'}}>
             {'Recuperar Contraseña'}
         </Link>
         <CardActions>

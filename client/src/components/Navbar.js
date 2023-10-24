@@ -12,10 +12,9 @@ import Divider from '@mui/material/Divider';
 import { useLocation } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
-import PersonAdd from '@mui/icons-material/PersonAdd';
-import Settings from '@mui/icons-material/Settings';
-import Logout from '@mui/icons-material/Logout';
 
+import Logout from '@mui/icons-material/Logout';
+import HomeIcon from '@mui/icons-material/Home';
 
 function ResponsiveAppBar() {
 
@@ -33,8 +32,7 @@ function ResponsiveAppBar() {
   const menuComponents = (
   <React.Fragment>
     <Box sx={{ display: 'flex', justifyContent: 'flex-end',  marginLeft: 'auto', alignItems: 'center', textAlign: 'center' }}>
-        <Typography sx={{ minWidth: 100 }}>Contact</Typography>
-        <Typography sx={{ minWidth: 100 }}>Profile</Typography>
+        <IconButton sx={{ minWidth: 100 }} href='/home'><HomeIcon sx={{ fontSize: 40, color: 'white' }}/></IconButton>
         <Tooltip title="Account settings">
           <IconButton
             onClick={handleClick}
@@ -44,7 +42,7 @@ function ResponsiveAppBar() {
             aria-haspopup="true"
             aria-expanded={open ? 'true' : undefined}
           >
-            <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+            <Avatar sx={{ fontSize: 40 }}/>
           </IconButton>
         </Tooltip>
       </Box>
@@ -87,22 +85,7 @@ function ResponsiveAppBar() {
           <MenuItem onClick={handleClose}>
             <Avatar /> Profile
           </MenuItem>
-          <MenuItem onClick={handleClose}>
-            <Avatar /> My account
-          </MenuItem>
           <Divider />
-          <MenuItem onClick={handleClose}>
-            <ListItemIcon>
-              <PersonAdd fontSize="small" />
-            </ListItemIcon>
-            Add another account
-          </MenuItem>
-          <MenuItem onClick={handleClose}>
-            <ListItemIcon>
-              <Settings fontSize="small" />
-            </ListItemIcon>
-            Settings
-          </MenuItem>
           <MenuItem onClick={handleClose}>
             <ListItemIcon>
               <Logout fontSize="small" />
