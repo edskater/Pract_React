@@ -101,6 +101,7 @@ const HomeAdmin = (
 </React.Fragment>
 );
 
+// eslint-disable-next-line react-hooks/rules-of-hooks, no-unused-vars
 const [userRole, setUserRole] = useState('admin');
 
 export default function HOME(){
