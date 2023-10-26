@@ -5,14 +5,33 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
-import { Box } from '@mui/material';
+import { Box, InputAdornment } from '@mui/material';
 import Link from '@mui/material/Link';
 import { useDispatch } from 'react-redux';
 import { authenticateUser } from '../redux/slices/authSlice';
 import { useState } from 'react';
+import IconButton from '@mui/material/IconButton';
+import Input from '@mui/material/Input';
+import FilledInput from '@mui/material/FilledInput';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputLabel from '@mui/material/InputLabel';
+import FormHelperText from '@mui/material/FormHelperText';
+import FormControl from '@mui/material/FormControl';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
+
  
 
 const Login = () => {
+
+  const [showPassword, setShowPassword] = React.useState(false);
+
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
+    
   const [values, setValues] = useState({
     email: '',
     password: '',
@@ -47,7 +66,26 @@ const Login = () => {
             Iniciar Sesión
           </Typography>
           <TextField sx={{ width: "50ch", marginBottom: "50px", borderRadius: '22px'}} onChange={(e) => onChange(e)} value={values.email} id="username" label="Nombre de usuario" variant="outlined" />
-          <TextField sx={{ width: "50ch", marginBottom: "50px", borderRadius: '22px'}}  onChange={(e) => onChange(e)} value={values.password} id="password" label="Contraseña" type="password" variant="outlined" />
+          <FormControl sx={{ width: "50ch", marginBottom: "50px", borderRadius: '22px' }} variant="outlined" onChange={(e) => onChange(e)} value={values.password}>
+          <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+          <OutlinedInput
+            id="outlined-adornment-password"
+            type={showPassword ? 'text' : 'password'}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  edge="end"
+                >
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            }
+            label="Password"
+          />
+        </FormControl>
         </CardContent>
         <Link href="/recuperar-contrasena" underline="hover" style={{color: "black", marginBottom: '20px'}}>
             {'Recuperar Contraseña'}
