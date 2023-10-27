@@ -112,7 +112,7 @@ export default function RegistrationForm() {
 
                   <Grid container spacing={2}>
                       <Grid item xs={4}>
-                          <TextField value={datosDelPrimerFormulario.nombre} fullWidth label="Nombre(s)" />
+                          <TextField value={datosDelPrimerFormulario.nombre} onChange={(e) => setDatosDelPrimerFormulario({ ...datosDelPrimerFormulario, nombre: e.target.value })}  fullWidth label="Nombre(s)" />
                       </Grid>
                       <Grid item xs={4}>
                           <TextField value={datosDelPrimerFormulario.apellidoP} fullWidth  label="Primer Apellido" />
