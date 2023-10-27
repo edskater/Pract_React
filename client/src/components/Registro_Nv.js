@@ -51,12 +51,23 @@ export default function RegistrationForm() {
 
   return (
     
-      <Container>
-        <Typography variant="h3" gutterBottom>
-         Datos Generales
-        </Typography>
+      <Container >
 
-              <Box height={'668px'} flexDirection="column" justifyContent={'space-evenly'} display={'flex'}>
+        
+                <Grid container spacing={2} marginTop={'0px'}>
+                <Grid item xs={10}>
+                    <Typography variant="h3" gutterBottom fullWidth> 
+                    Datos Generales
+                    </Typography>
+                </Grid>
+                <Grid item xs={2}>
+                    <Button variant="text" size="large" sx={{display: 'flex', justifyContent: 'flex-end'}} >
+                    Persona Moral
+                    </Button>
+                </Grid>
+                </Grid>
+
+              <Box height={'652px'} flexDirection="column" justifyContent={'space-evenly'} display={'flex'}>
 
                   <Grid container spacing={2}>
                       <Grid item xs={4}>
