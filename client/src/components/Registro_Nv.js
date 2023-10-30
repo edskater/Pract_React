@@ -218,11 +218,98 @@ export default function RegistrationForm() {
     {formularioActual === 2 && (
         <Container>
           {/* Código del segundo formulario */}
+          <Grid container spacing={2} marginTop={'0px'}>
+                <Grid item xs={10}>
+                    <Typography variant="h3" gutterBottom fullWidth> 
+                    Datos Domicilio
+                    </Typography>
+                </Grid>
+                <Grid item xs={2}>
+                </Grid>
+                </Grid>
+
+              <Box height={'652px'} flexDirection="column" justifyContent={'space-evenly'} display={'flex'}>
+
+                  <Grid container spacing={2}>
+                      <Grid item xs={4}>
+                          <TextField value={datosDelPrimerFormulario.nombre} onChange={(e) => setDatosDelPrimerFormulario({ ...datosDelPrimerFormulario, nombre: e.target.value })}  fullWidth label="CP" />
+                      </Grid>
+                      <Grid item xs={4}>
+                          <TextField value={datosDelPrimerFormulario.apellidoP} fullWidth  label="Entidad Federativa (Estado)" />
+                      </Grid>
+                  </Grid>
+
+                  <Grid container spacing={2}>
+                      <Grid item xs={2}>
+                          <FormControl fullWidth required>
+                              <InputLabel>Municipio</InputLabel>{/* implentar select de auto completado el que ingresas texto y busca resultados */}
+                              <Select sx={{ minWidth: '92px' }}
+                                        value={sexo}
+                                        onChange={(e) => setSexo(e.target.value)} // Captura el valor seleccionado de "Sexo"
+                                >
+                                  {/* Aquí puedes añadir tus opciones */}
+                                  <MenuItem value="Option 1">Option 1</MenuItem>
+                                  <MenuItem value="Option 2">Option 2</MenuItem>
+                              </Select>
+                          </FormControl>
+                      </Grid>
+                      <Grid item xs={4}>
+                      <FormControl fullWidth required>
+                              <InputLabel>Localidad</InputLabel>{/* implentar select de auto completado el que ingresas texto y busca resultados */}
+                              <Select sx={{ minWidth: '92px' }}
+                                        value={sexo}
+                                        onChange={(e) => setSexo(e.target.value)} // Captura el valor seleccionado de "Sexo"
+                                >
+                                  {/* Aquí puedes añadir tus opciones */}
+                                  <MenuItem value="Option 1">Option 1</MenuItem>
+                                  <MenuItem value="Option 2">Option 2</MenuItem>
+                              </Select>
+                          </FormControl>
+                      </Grid>
+                      <Grid item xs={4}>
+                      <FormControl fullWidth required>
+                              <InputLabel>Colonia</InputLabel>{/* implentar select de auto completado el que ingresas texto y busca resultados */}
+                              <Select sx={{ minWidth: '92px' }}
+                                        value={sexo}
+                                        onChange={(e) => setSexo(e.target.value)} // Captura el valor seleccionado de "Sexo"
+                                >
+                                  {/* Aquí puedes añadir tus opciones */}
+                                  <MenuItem value="Option 1">Option 1</MenuItem>
+                                  <MenuItem value="Option 2">Option 2</MenuItem>
+                              </Select>
+                          </FormControl>
+                      </Grid>
+                  </Grid>
+
+                  <Grid container spacing={2}>
+                      <Grid item xs={4}>
+                      <FormControl fullWidth required>
+                              <InputLabel>Calle</InputLabel>{/* implentar select de auto completado el que ingresas texto y busca resultados */}
+                              <Select sx={{ minWidth: '92px' }}
+                                        value={sexo}
+                                        onChange={(e) => setSexo(e.target.value)} // Captura el valor seleccionado de "Sexo"
+                                >
+                                  {/* Aquí puedes añadir tus opciones */}
+                                  <MenuItem value="Option 1">Option 1</MenuItem>
+                                  <MenuItem value="Option 2">Option 2</MenuItem>
+                              </Select>
+                          </FormControl>
+                      </Grid>
+
+                      <Grid item xs={4}>
+                          <TextField value={datosDelPrimerFormulario.CorreoElc} fullWidth required label="Numero Exterior" />
+                      </Grid>
+                  </Grid>
+
+                  
+
           <ButtonGroup variant="text" aria-label=" outlined large button group" style={{justifyContent:'flex-end'}} size="large">
                 <Button key="Atras">Atras</Button>
                 <Button key="Siguiente" onClick={() => handleGuardarDatos(datosDelSegundoFormulario)}> Siguiente </Button>
           </ButtonGroup>
+          </Box>
         </Container>
+
       )}
 
       {formularioActual === 3 && (
