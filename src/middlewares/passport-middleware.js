@@ -1,4 +1,4 @@
-const passport = require('passport')
+/* const passport = require('passport')
 const { Strategy } = require('passport-jwt')
 const { SECRET } = require('../constants')
 const db = require('../db')
@@ -35,3 +35,4 @@ passport.use(
     }
   })
 )
+ */

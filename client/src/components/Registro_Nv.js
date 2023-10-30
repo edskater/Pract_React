@@ -1,6 +1,6 @@
 import React from 'react';
 import { TextField, Select, MenuItem, FormControl, InputLabel, Switch, FormControlLabel, Box, Container, Grid, Typography, Button, ButtonGroup } from '@mui/material';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 
 function curpValida(curp) {
@@ -40,6 +40,29 @@ export default function RegistrationForm() {
   const [sexo, setSexo] = useState(''); // Estado para el campo "Sexo"
   const [estadoNacimiento, setEstadoNacimiento] = useState(''); // Estado para el campo "Estado de Nacimiento"
   const [Ocup, setOcupacion] = useState('');
+  const [EstCivils, setEstCivils] = useState('');
+
+  const [Estado, setEstado] = useState('');
+  const [Municipio, setMunicipio] = useState('');
+  const [Localidad, setLocalidad] = useState('');
+  const [Colonia, setColonia] = useState('');
+  const [Calle, setCalle] = useState('');
+
+  const [entidades, setEntidades] = useState([]);
+
+  useEffect(() => {
+    const fetchEntidades = async () => {
+      try {
+        const response = await fetch('/api/entidades'); // Cambia la ruta de la API según tu configuración
+        const data = await response.json();
+        setEntidades(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchEntidades();
+  }, []);
 
   const [datosDelPrimerFormulario, setDatosDelPrimerFormulario] = useState({
     nombre:'',
@@ -58,8 +81,13 @@ export default function RegistrationForm() {
   });
   
   const [datosDelSegundoFormulario, setDatosDelSegundoFormulario] = useState({
-    campo1: '',
-    campo2: '',
+    CP: '',
+    Estado: '',
+    Municipio: '',
+    Localidad: '',
+    Colonia: '',
+    Calle: '',
+    Num_ext: '',
     // ... otros campos y sus valores iniciales
   });
 
@@ -115,16 +143,16 @@ export default function RegistrationForm() {
                           <TextField value={datosDelPrimerFormulario.nombre} onChange={(e) => setDatosDelPrimerFormulario({ ...datosDelPrimerFormulario, nombre: e.target.value })}  fullWidth label="Nombre(s)" />
                       </Grid>
                       <Grid item xs={4}>
-                          <TextField value={datosDelPrimerFormulario.apellidoP} fullWidth  label="Primer Apellido" />
+                          <TextField value={datosDelPrimerFormulario.apellidoP} onChange={(e) => setDatosDelPrimerFormulario({ ...datosDelPrimerFormulario, apellidoP: e.target.value })} fullWidth  label="Primer Apellido" />
                       </Grid>
                       <Grid item xs={4}>
-                          <TextField value={datosDelPrimerFormulario.apellidoP} fullWidth label="Segundo Apellido" />
+                          <TextField value={datosDelPrimerFormulario.apellidoM} onChange={(e) => setDatosDelPrimerFormulario({ ...datosDelPrimerFormulario, apellidoM: e.target.value })} fullWidth label="Segundo Apellido" />
                       </Grid>
                   </Grid>
 
                   <Grid container spacing={2}>
                       <Grid item xs={2}>
-                          <TextField fullWidth required type="date" value={datosDelPrimerFormulario.FechaNac} label="Fecha de Nacimiento" InputLabelProps={{ shrink: true }} />
+                          <TextField fullWidth required type="date" value={datosDelPrimerFormulario.FechaNac} onChange={(e) => setDatosDelPrimerFormulario({ ...datosDelPrimerFormulario, FechaNac: e.target.value })} label="Fecha de Nacimiento" InputLabelProps={{ shrink: true }} />
                       </Grid>
 
                       <Grid item xs={2}>
@@ -135,8 +163,8 @@ export default function RegistrationForm() {
                                         onChange={(e) => setSexo(e.target.value)} // Captura el valor seleccionado de "Sexo"
                                 >
                                   {/* Aquí puedes añadir tus opciones */}
-                                  <MenuItem value="Option 1">Option 1</MenuItem>
-                                  <MenuItem value="Option 2">Option 2</MenuItem>
+                                  <MenuItem value="Masculino">Masculino</MenuItem>
+                                  <MenuItem value="Femenino">Femenino</MenuItem>
                               </Select>
                           </FormControl>
                       </Grid>
@@ -147,8 +175,11 @@ export default function RegistrationForm() {
                                     onChange={(e) => setEstadoNacimiento(e.target.value)} // Captura el valor seleccionado de "Estado de Nacimiento"
                                     >
                                   {/* Aquí puedes añadir tus opciones */}
-                                  <MenuItem value="Option 1">Option 1</MenuItem>
-                                  <MenuItem value="Option 2">Option 2</MenuItem>
+                                  {entidades.map((entidad) => (
+                                    <MenuItem key={entidad} value={entidad}>
+                                        {entidad}
+                                    </MenuItem>
+                                    ))}
                               </Select>
                           </FormControl>
                       </Grid>
@@ -163,8 +194,8 @@ export default function RegistrationForm() {
                       </Grid>
                   </Grid>
 
-                  <Grid container spacing={2}>
-                      <Grid item xs={4}>
+                  <Grid container spacing={1}>
+                      <Grid item xs={2}>
                           <FormControl fullWidth required>
                               <InputLabel>ocupacion</InputLabel>
                               <Select sx={{ minWidth: '132px' }}
@@ -178,12 +209,27 @@ export default function RegistrationForm() {
                           </FormControl>
                       </Grid>
 
+                      <Grid item xs={2}>
+                          <FormControl fullWidth required>
+                              <InputLabel>Estado Civil</InputLabel>
+                              <Select sx={{ minWidth: '132px' }}
+                              value={EstCivils}
+                              onChange={(e) => setEstCivils(e.target.value)} // Captura el valor seleccionado de "Estado de Nacimiento"
+                              >
+                                  {/* Aquí puedes añadir tus opciones */}
+                                  <MenuItem value="Option 1">Option 1</MenuItem>
+                                  <MenuItem value="Option 2">Option 2</MenuItem>
+                              </Select>
+                          </FormControl>
+                      </Grid>
+
+
                       <Grid item xs={4}>
-                          <TextField value={datosDelPrimerFormulario.CorreoElc} fullWidth required label="Correo Electronico" />
+                          <TextField value={datosDelPrimerFormulario.CorreoElc} onChange={(e) => setDatosDelPrimerFormulario({ ...datosDelPrimerFormulario, CorreoElc: e.target.value })} fullWidth required label="Correo Electronico" />
                       </Grid>
 
                       <Grid item xs={4}>
-                          <TextField value={datosDelPrimerFormulario.Telefono} fullWidth required label="Telefono" />
+                          <TextField value={datosDelPrimerFormulario.Telefono} onChange={(e) => setDatosDelPrimerFormulario({ ...datosDelPrimerFormulario, Telefono: e.target.value })} fullWidth required label="Telefono" />
                       </Grid>
                   </Grid>
 
@@ -198,10 +244,10 @@ export default function RegistrationForm() {
                       <>
                           <Grid container spacing={2}>
                               <Grid item xs={6}>
-                                  <TextField value={datosDelPrimerFormulario.NombreEmergen} fullWidth required label="Nombre completo" inputProps={{ maxLength: 50 }} />
+                                  <TextField value={datosDelPrimerFormulario.NombreEmergen} onChange={(e) => setDatosDelPrimerFormulario({ ...datosDelPrimerFormulario, NombreEmergen: e.target.value })} fullWidth required label="Nombre completo" inputProps={{ maxLength: 50 }} />
                               </Grid>
                               <Grid item xs={6}>
-                                  <TextField value={datosDelPrimerFormulario.TelEmergen} fullWidth required label="Teléfono" type="tel" inputProps={{ maxLength: 10 }} />
+                                  <TextField value={datosDelPrimerFormulario.TelEmergen} onChange={(e) => setDatosDelPrimerFormulario({ ...datosDelPrimerFormulario, TelEmergen: e.target.value })} fullWidth required label="Teléfono" type="tel" inputProps={{ maxLength: 10 }} />
                               </Grid>
                           </Grid>
                       </>
@@ -232,10 +278,20 @@ export default function RegistrationForm() {
 
                   <Grid container spacing={2}>
                       <Grid item xs={4}>
-                          <TextField value={datosDelPrimerFormulario.nombre} onChange={(e) => setDatosDelPrimerFormulario({ ...datosDelPrimerFormulario, nombre: e.target.value })}  fullWidth label="CP" />
+                          <TextField value={datosDelSegundoFormulario.CP} onChange={(e) => setDatosDelSegundoFormulario({ ...datosDelSegundoFormulario, CP: e.target.value })}  fullWidth label="CP" />
                       </Grid>
                       <Grid item xs={4}>
-                          <TextField value={datosDelPrimerFormulario.apellidoP} fullWidth  label="Entidad Federativa (Estado)" />
+                      <FormControl fullWidth required>
+                              <InputLabel>Entidad Federativa</InputLabel>{/* implentar select de auto completado el que ingresas texto y busca resultados */}
+                              <Select sx={{ minWidth: '92px' }}
+                                        value={Estado}
+                                        onChange={(e) => setEstado(e.target.value)} // Captura el valor seleccionado de "Sexo"
+                                >
+                                  {/* Aquí puedes añadir tus opciones */}
+                                  <MenuItem value="Option 1">Option 1</MenuItem>
+                                  <MenuItem value="Option 2">Option 2</MenuItem>
+                              </Select>
+                          </FormControl>
                       </Grid>
                   </Grid>
 
@@ -244,8 +300,8 @@ export default function RegistrationForm() {
                           <FormControl fullWidth required>
                               <InputLabel>Municipio</InputLabel>{/* implentar select de auto completado el que ingresas texto y busca resultados */}
                               <Select sx={{ minWidth: '92px' }}
-                                        value={sexo}
-                                        onChange={(e) => setSexo(e.target.value)} // Captura el valor seleccionado de "Sexo"
+                                        value={Municipio}
+                                        onChange={(e) => setMunicipio(e.target.value)} // Captura el valor seleccionado de "Sexo"
                                 >
                                   {/* Aquí puedes añadir tus opciones */}
                                   <MenuItem value="Option 1">Option 1</MenuItem>
@@ -257,8 +313,8 @@ export default function RegistrationForm() {
                       <FormControl fullWidth required>
                               <InputLabel>Localidad</InputLabel>{/* implentar select de auto completado el que ingresas texto y busca resultados */}
                               <Select sx={{ minWidth: '92px' }}
-                                        value={sexo}
-                                        onChange={(e) => setSexo(e.target.value)} // Captura el valor seleccionado de "Sexo"
+                                        value={Localidad}
+                                        onChange={(e) => setLocalidad(e.target.value)} // Captura el valor seleccionado de "Sexo"
                                 >
                                   {/* Aquí puedes añadir tus opciones */}
                                   <MenuItem value="Option 1">Option 1</MenuItem>
@@ -270,8 +326,8 @@ export default function RegistrationForm() {
                       <FormControl fullWidth required>
                               <InputLabel>Colonia</InputLabel>{/* implentar select de auto completado el que ingresas texto y busca resultados */}
                               <Select sx={{ minWidth: '92px' }}
-                                        value={sexo}
-                                        onChange={(e) => setSexo(e.target.value)} // Captura el valor seleccionado de "Sexo"
+                                        value={Colonia}
+                                        onChange={(e) => setColonia(e.target.value)} // Captura el valor seleccionado de "Sexo"
                                 >
                                   {/* Aquí puedes añadir tus opciones */}
                                   <MenuItem value="Option 1">Option 1</MenuItem>
@@ -286,8 +342,8 @@ export default function RegistrationForm() {
                       <FormControl fullWidth required>
                               <InputLabel>Calle</InputLabel>{/* implentar select de auto completado el que ingresas texto y busca resultados */}
                               <Select sx={{ minWidth: '92px' }}
-                                        value={sexo}
-                                        onChange={(e) => setSexo(e.target.value)} // Captura el valor seleccionado de "Sexo"
+                                        value={Calle}
+                                        onChange={(e) => setCalle(e.target.value)} // Captura el valor seleccionado de "Sexo"
                                 >
                                   {/* Aquí puedes añadir tus opciones */}
                                   <MenuItem value="Option 1">Option 1</MenuItem>
@@ -297,7 +353,7 @@ export default function RegistrationForm() {
                       </Grid>
 
                       <Grid item xs={4}>
-                          <TextField value={datosDelPrimerFormulario.CorreoElc} fullWidth required label="Numero Exterior" />
+                          <TextField value={datosDelSegundoFormulario.Num_ext} onChange={(e) => setDatosDelSegundoFormulario({ ...datosDelSegundoFormulario, Num_ext: e.target.value })}  fullWidth required label="Numero Exterior" />
                       </Grid>
                   </Grid>
 

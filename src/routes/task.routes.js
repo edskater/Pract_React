@@ -1,16 +1,11 @@
 const { Router } = require("express");
-const { getAlltasks, getTasks, postAlltasks, deleteTasks, updateTasks } = require('../controllers/task.controllers')
+const { getEntidades } = require('../controllers/task.controllers')
 
 const router = Router();
 
-router.get ('/tasks/:id', getTasks)
 
-router.get ('/tasks', getAlltasks)
 
-router.post ('/tasks', postAlltasks )
+router.get ('/entidades', getEntidades)
 
-router.delete ('/tasks/:id', deleteTasks )
-
-router.put ('/tasks/:id', updateTasks)
 
 module.exports = router;
