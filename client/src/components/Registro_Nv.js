@@ -125,12 +125,12 @@ export default function RegistrationForm() {
         
                 <Grid container spacing={2} marginTop={'0px'}>
                 <Grid item xs={10}>
-                    <Typography variant="h3" gutterBottom fullWidth> 
+                    <Typography variant="h3" gutterBottom fullWidth > 
                     Datos Generales
                     </Typography>
                 </Grid>
                 <Grid item xs={2}>
-                    <Button variant="text" size="large" sx={{display: 'flex', justifyContent: 'flex-end'}} >
+                    <Button variant="text" size="large" href='/Registro_Nv_moral'sx={{display: 'flex', justifyContent: 'flex-end'}} >
                     Persona Moral
                     </Button>
                 </Grid>
@@ -140,23 +140,23 @@ export default function RegistrationForm() {
 
                   <Grid container spacing={2}>
                       <Grid item xs={4}>
-                          <TextField value={datosDelPrimerFormulario.nombre} onChange={(e) => setDatosDelPrimerFormulario({ ...datosDelPrimerFormulario, nombre: e.target.value })}  fullWidth label="Nombre(s)" />
+                          <TextField value={datosDelPrimerFormulario.nombre} onChange={(e) => setDatosDelPrimerFormulario({ ...datosDelPrimerFormulario, nombre: e.target.value })}  fullWidth  label="Nombre(s)" />
                       </Grid>
                       <Grid item xs={4}>
-                          <TextField value={datosDelPrimerFormulario.apellidoP} onChange={(e) => setDatosDelPrimerFormulario({ ...datosDelPrimerFormulario, apellidoP: e.target.value })} fullWidth  label="Primer Apellido" />
+                          <TextField value={datosDelPrimerFormulario.apellidoP} onChange={(e) => setDatosDelPrimerFormulario({ ...datosDelPrimerFormulario, apellidoP: e.target.value })} fullWidth   label="Primer Apellido" />
                       </Grid>
                       <Grid item xs={4}>
-                          <TextField value={datosDelPrimerFormulario.apellidoM} onChange={(e) => setDatosDelPrimerFormulario({ ...datosDelPrimerFormulario, apellidoM: e.target.value })} fullWidth label="Segundo Apellido" />
+                          <TextField value={datosDelPrimerFormulario.apellidoM} onChange={(e) => setDatosDelPrimerFormulario({ ...datosDelPrimerFormulario, apellidoM: e.target.value })} fullWidth  label="Segundo Apellido" />
                       </Grid>
                   </Grid>
 
                   <Grid container spacing={2}>
                       <Grid item xs={2}>
-                          <TextField fullWidth required type="date" value={datosDelPrimerFormulario.FechaNac} onChange={(e) => setDatosDelPrimerFormulario({ ...datosDelPrimerFormulario, FechaNac: e.target.value })} label="Fecha de Nacimiento" InputLabelProps={{ shrink: true }} />
+                          <TextField fullWidth  required type="date" value={datosDelPrimerFormulario.FechaNac} onChange={(e) => setDatosDelPrimerFormulario({ ...datosDelPrimerFormulario, FechaNac: e.target.value })} label="Fecha de Nacimiento" InputLabelProps={{ shrink: true }} />
                       </Grid>
 
                       <Grid item xs={2}>
-                          <FormControl fullWidth required>
+                          <FormControl fullWidth  required>
                               <InputLabel>Sexo</InputLabel>
                               <Select sx={{ minWidth: '92px' }}
                                         value={sexo}
@@ -169,7 +169,7 @@ export default function RegistrationForm() {
                           </FormControl>
                       </Grid>
                       <Grid item xs={4}>
-                          <FormControl fullWidth required>
+                          <FormControl fullWidth  required>
                               <InputLabel>Estado de Nacimiento</InputLabel>
                               <Select value={estadoNacimiento}
                                     onChange={(e) => setEstadoNacimiento(e.target.value)} // Captura el valor seleccionado de "Estado de Nacimiento"
@@ -190,13 +190,13 @@ export default function RegistrationForm() {
                               error={!curpValidity} /*  Muestra un error si la CURP no es válida */
                               helperText={!curpValidity ? "CURP no válida" : ""} /* Mensaje de error */
                               value={datosDelPrimerFormulario.CURP}
-                              fullWidth />
+                              fullWidth  />
                       </Grid>
                   </Grid>
 
                   <Grid container spacing={1}>
                       <Grid item xs={2}>
-                          <FormControl fullWidth required>
+                          <FormControl fullWidth  required>
                               <InputLabel>ocupacion</InputLabel>
                               <Select sx={{ minWidth: '132px' }}
                               value={Ocup}
@@ -210,7 +210,7 @@ export default function RegistrationForm() {
                       </Grid>
 
                       <Grid item xs={2}>
-                          <FormControl fullWidth required>
+                          <FormControl fullWidth  required>
                               <InputLabel>Estado Civil</InputLabel>
                               <Select sx={{ minWidth: '132px' }}
                               value={EstCivils}
@@ -225,11 +225,11 @@ export default function RegistrationForm() {
 
 
                       <Grid item xs={4}>
-                          <TextField value={datosDelPrimerFormulario.CorreoElc} onChange={(e) => setDatosDelPrimerFormulario({ ...datosDelPrimerFormulario, CorreoElc: e.target.value })} fullWidth required label="Correo Electronico" />
+                          <TextField value={datosDelPrimerFormulario.CorreoElc} onChange={(e) => setDatosDelPrimerFormulario({ ...datosDelPrimerFormulario, CorreoElc: e.target.value })} fullWidth  required label="Correo Electronico" />
                       </Grid>
 
                       <Grid item xs={4}>
-                          <TextField value={datosDelPrimerFormulario.Telefono} onChange={(e) => setDatosDelPrimerFormulario({ ...datosDelPrimerFormulario, Telefono: e.target.value })} fullWidth required label="Telefono" />
+                          <TextField value={datosDelPrimerFormulario.Telefono} onChange={(e) => setDatosDelPrimerFormulario({ ...datosDelPrimerFormulario, Telefono: e.target.value })} fullWidth  required label="Telefono" />
                       </Grid>
                   </Grid>
 
@@ -244,10 +244,10 @@ export default function RegistrationForm() {
                       <>
                           <Grid container spacing={2}>
                               <Grid item xs={6}>
-                                  <TextField value={datosDelPrimerFormulario.NombreEmergen} onChange={(e) => setDatosDelPrimerFormulario({ ...datosDelPrimerFormulario, NombreEmergen: e.target.value })} fullWidth required label="Nombre completo" inputProps={{ maxLength: 50 }} />
+                                  <TextField value={datosDelPrimerFormulario.NombreEmergen} onChange={(e) => setDatosDelPrimerFormulario({ ...datosDelPrimerFormulario, NombreEmergen: e.target.value })} fullWidth  required label="Nombre completo" inputProps={{ maxLength: 50 }} />
                               </Grid>
                               <Grid item xs={6}>
-                                  <TextField value={datosDelPrimerFormulario.TelEmergen} onChange={(e) => setDatosDelPrimerFormulario({ ...datosDelPrimerFormulario, TelEmergen: e.target.value })} fullWidth required label="Teléfono" type="tel" inputProps={{ maxLength: 10 }} />
+                                  <TextField value={datosDelPrimerFormulario.TelEmergen} onChange={(e) => setDatosDelPrimerFormulario({ ...datosDelPrimerFormulario, TelEmergen: e.target.value })} fullWidth  required label="Teléfono" type="tel" inputProps={{ maxLength: 10 }} />
                               </Grid>
                           </Grid>
                       </>
@@ -266,7 +266,7 @@ export default function RegistrationForm() {
           {/* Código del segundo formulario */}
           <Grid container spacing={2} marginTop={'0px'}>
                 <Grid item xs={10}>
-                    <Typography variant="h3" gutterBottom fullWidth> 
+                    <Typography variant="h3" gutterBottom fullWidth > 
                     Datos Domicilio
                     </Typography>
                 </Grid>
@@ -278,10 +278,10 @@ export default function RegistrationForm() {
 
                   <Grid container spacing={2}>
                       <Grid item xs={4}>
-                          <TextField value={datosDelSegundoFormulario.CP} onChange={(e) => setDatosDelSegundoFormulario({ ...datosDelSegundoFormulario, CP: e.target.value })}  fullWidth label="CP" />
+                          <TextField value={datosDelSegundoFormulario.CP} onChange={(e) => setDatosDelSegundoFormulario({ ...datosDelSegundoFormulario, CP: e.target.value })}  fullWidth  label="CP" />
                       </Grid>
                       <Grid item xs={4}>
-                      <FormControl fullWidth required>
+                      <FormControl fullWidth  required>
                               <InputLabel>Entidad Federativa</InputLabel>{/* implentar select de auto completado el que ingresas texto y busca resultados */}
                               <Select sx={{ minWidth: '92px' }}
                                         value={Estado}
@@ -297,7 +297,7 @@ export default function RegistrationForm() {
 
                   <Grid container spacing={2}>
                       <Grid item xs={2}>
-                          <FormControl fullWidth required>
+                          <FormControl fullWidth  required>
                               <InputLabel>Municipio</InputLabel>{/* implentar select de auto completado el que ingresas texto y busca resultados */}
                               <Select sx={{ minWidth: '92px' }}
                                         value={Municipio}
@@ -310,7 +310,7 @@ export default function RegistrationForm() {
                           </FormControl>
                       </Grid>
                       <Grid item xs={4}>
-                      <FormControl fullWidth required>
+                      <FormControl fullWidth  required>
                               <InputLabel>Localidad</InputLabel>{/* implentar select de auto completado el que ingresas texto y busca resultados */}
                               <Select sx={{ minWidth: '92px' }}
                                         value={Localidad}
@@ -323,7 +323,7 @@ export default function RegistrationForm() {
                           </FormControl>
                       </Grid>
                       <Grid item xs={4}>
-                      <FormControl fullWidth required>
+                      <FormControl fullWidth  required>
                               <InputLabel>Colonia</InputLabel>{/* implentar select de auto completado el que ingresas texto y busca resultados */}
                               <Select sx={{ minWidth: '92px' }}
                                         value={Colonia}
@@ -339,7 +339,7 @@ export default function RegistrationForm() {
 
                   <Grid container spacing={2}>
                       <Grid item xs={4}>
-                      <FormControl fullWidth required>
+                      <FormControl fullWidth  required>
                               <InputLabel>Calle</InputLabel>{/* implentar select de auto completado el que ingresas texto y busca resultados */}
                               <Select sx={{ minWidth: '92px' }}
                                         value={Calle}
@@ -353,7 +353,7 @@ export default function RegistrationForm() {
                       </Grid>
 
                       <Grid item xs={4}>
-                          <TextField value={datosDelSegundoFormulario.Num_ext} onChange={(e) => setDatosDelSegundoFormulario({ ...datosDelSegundoFormulario, Num_ext: e.target.value })}  fullWidth required label="Numero Exterior" />
+                          <TextField value={datosDelSegundoFormulario.Num_ext} onChange={(e) => setDatosDelSegundoFormulario({ ...datosDelSegundoFormulario, Num_ext: e.target.value })}  fullWidth  required label="Numero Exterior" />
                       </Grid>
                   </Grid>
 
