@@ -191,6 +191,18 @@ export default function RegistrationForm() {
                 </Grid>
 
               <Box height={'652px'} flexDirection="column" justifyContent={'space-evenly'} display={'flex'}>
+                
+                <Grid container spacing={2}>
+                        <Grid item xs={4}>
+                            <TextField value={datosDelSegundoFormulario.Razon_Social} onChange={(e) => setDatosDelSegundoFormulario({ ...datosDelSegundoFormulario, Razon_Social: e.target.value })}  fullWidth  required label="Razon social" />
+                        </Grid>
+                        <Grid item xs={4}>
+                            <TextField value={datosDelSegundoFormulario.RFC} onChange={(e) => setDatosDelSegundoFormulario({ ...datosDelSegundoFormulario, RFC: e.target.value })}  fullWidth  required label="RFC" />
+                        </Grid>
+                        <Grid item xs={4}>
+                            <TextField value={datosDelSegundoFormulario.Correo} onChange={(e) => setDatosDelSegundoFormulario({ ...datosDelSegundoFormulario, Correo: e.target.value })}  fullWidth  required label="Correo" />
+                        </Grid>
+                </Grid>
 
                   <Grid container spacing={2}>
                       <Grid item xs={4}> 
@@ -231,21 +243,7 @@ export default function RegistrationForm() {
                     <Grid item xs={2}>
                           <TextField value={datosDelSegundoFormulario.Num_ext} onChange={(e) => setDatosDelSegundoFormulario({ ...datosDelSegundoFormulario, Num_ext: e.target.value })}  fullWidth  required label="Numero Exterior" />
                       </Grid>
-                  </Grid>
-
-                  <Grid container spacing={2}>
-                      <Grid item xs={4}>
-                          <TextField value={datosDelSegundoFormulario.Razon_Social} onChange={(e) => setDatosDelSegundoFormulario({ ...datosDelSegundoFormulario, Razon_Social: e.target.value })}  fullWidth  required label="Razon social" />
-                      </Grid>
-                      <Grid item xs={4}>
-                          <TextField value={datosDelSegundoFormulario.RFC} onChange={(e) => setDatosDelSegundoFormulario({ ...datosDelSegundoFormulario, RFC: e.target.value })}  fullWidth  required label="RFC" />
-                      </Grid>
-                      <Grid item xs={4}>
-                          <TextField value={datosDelSegundoFormulario.Correo} onChange={(e) => setDatosDelSegundoFormulario({ ...datosDelSegundoFormulario, Correo: e.target.value })}  fullWidth  required label="Correo" />
-                      </Grid>
-                  </Grid>
-
-                  
+                  </Grid>                
 
           <ButtonGroup variant="text" aria-label=" outlined large button group" style={{justifyContent:'flex-end'}} size="large">
                 <Button key="Atras" href='/Registro_Nv'> Atras </Button>
