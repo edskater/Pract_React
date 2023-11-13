@@ -18,7 +18,6 @@ const Revocacion = () => {
     setFile(event.target.files[0]);
   }
 
- 
 
   const createPDF = () => {
     let doc = new jsPDF('p', undefined, 'a4');
@@ -110,8 +109,7 @@ El motivo que justifica tal solicitud es: ${motivoRevocacion}.`
     hiddFrame.src = doc.output('bloburl');
     document.body.appendChild(hiddFrame);
   };
-
-    
+  
   
   const createPDF2 = () => {
     let doc = new jsPDF('p', undefined, 'a4');
