@@ -11,11 +11,10 @@
      RUN npm install
      
      # Instalar las dependencias del cliente y construir la aplicación
-     RUN cd client && npm install && npm run build
+     RUN cd client && npm install && npm start
      
      # Exponer el puerto en el que se ejecutará la aplicación
      EXPOSE 5000
      
      # Comando para ejecutar la aplicación
      CMD ["npm", "start"]
-     ```

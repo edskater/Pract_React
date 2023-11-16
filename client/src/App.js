@@ -14,6 +14,7 @@ import Editar_regist from "./components/Editar_registro";
 import Editar_registro_moral from "./components/Editar_registro_moral";
 import Revocacion from "./components/Revocacion";
 import Consulta_registro from "./components/Consulta_registro"
+import Regist_users from "./components/Admin/Regist_users";
 
 
 export default function App(){
@@ -36,6 +37,7 @@ export default function App(){
           <Route path="/Editar_Regist_Moral" element={<Editar_registro_moral/>}/>
           <Route path="/Revocacion" element={<Revocacion/>}/>
           <Route path="/Consultar_Registro" element={<Consulta_registro/>}/>
+          <Route path="/Admin/Regist_users" element={<Regist_users/>}/>
 
 
       </Routes>

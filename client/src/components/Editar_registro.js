@@ -58,11 +58,21 @@ export default function Editar_Regist() {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(0);
   const [editClicked, setEditClicked] = useState(false);
-  const navigate = useNavigate(); 
+  const [isFormEnabled, setIsFormEnabled] = useState(false);
+ 
+  const navigate = useNavigate();
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const handleFileUpload = (event) => {
+    setSelectedFile(event.target.files[0]);
+    setEditClicked(false);
+   };
+
 
   const handleClickOpen = () => {
-    setOpen(true);
-    setEditClicked(true); // Actualiza la variable de estado cuando se hace clic en el botón "Editar"
+    setOpen(!isFormEnabled);
+    setEditClicked(!isFormEnabled); // Actualiza la variable de estado cuando se hace clic en el botón "Editar"
+    setIsFormEnabled(!isFormEnabled);
   };
 
   const handleClose = () => {
@@ -82,7 +92,7 @@ export default function Editar_Regist() {
     <Container>
       <Typography sx={{marginBottom: '9px'}} variant='h2' display="flex" gutterBottom>Editar Registro</Typography>
       <Box sx={{ height: '66vh', display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap', alignContent: 'center', flexGrow: 1, bgcolor: 'background.paper'}}    >
-      <Card>
+      <Card >
         <CardContent sx={{display: 'flex', alignItems: 'center'}}>
         <Tabs
         
@@ -203,35 +213,50 @@ export default function Editar_Regist() {
             CURP
           </Typography>
           <TextField id="outlined-basic" label="Outlined" variant="outlined" fullWidth sx={{marginRight: '20px'}} />
-          <IconButton> <FileUploadIcon /> </IconButton>
+          <input type="file" style={{ display: 'none' }} id="fileUpload" onChange={handleFileUpload} />
+          <IconButton disabled={!isFormEnabled} onClick={() => document.getElementById('fileUpload').click()}>
+          <FileUploadIcon />
+          </IconButton>
         </Stack>
         <Stack display="flex" flexDirection="row">
           <Typography sx={{width: '100%', display:'flex', alignItems:'center'}} variant='body1'>
             Documento Aprovatorio de Nacionalidad
           </Typography>
           <TextField id="outlined-basic" label="Outlined" variant="outlined" fullWidth sx={{marginRight: '20px'}} />
-          <IconButton> <FileUploadIcon /> </IconButton>
+          <input type="file" style={{ display: 'none' }} id="fileUpload" onChange={handleFileUpload} />
+          <IconButton disabled={!isFormEnabled} onClick={() => document.getElementById('fileUpload').click()}>
+          <FileUploadIcon />
+          </IconButton>
         </Stack>
         <Stack display="flex" flexDirection="row">
           <Typography sx={{width: '100%', display:'flex', alignItems:'center'}} variant='body1'>
             Acta de Registro
           </Typography>
           <TextField id="outlined-basic" label="Outlined" variant="outlined" fullWidth sx={{marginRight: '20px'}} />
-          <IconButton> <FileUploadIcon /> </IconButton>
+          <input type="file" style={{ display: 'none' }} id="fileUpload" onChange={handleFileUpload} />
+          <IconButton disabled={!isFormEnabled} onClick={() => document.getElementById('fileUpload').click()}>
+          <FileUploadIcon />
+          </IconButton>
         </Stack>
         <Stack display="flex" flexDirection="row">
           <Typography sx={{width: '100%', display:'flex', alignItems:'center'}} variant='body1'>
           Identificacion Oficial
           </Typography>
           <TextField id="outlined-basic" label="Outlined" variant="outlined" fullWidth sx={{marginRight: '20px'}}  />
-          <IconButton> <FileUploadIcon /> </IconButton>
+          <input type="file" style={{ display: 'none' }} id="fileUpload" onChange={handleFileUpload} />
+          <IconButton disabled={!isFormEnabled} onClick={() => document.getElementById('fileUpload').click()}>
+          <FileUploadIcon />
+          </IconButton>
         </Stack>
         <Stack display="flex" flexDirection="row">
           <Typography sx={{width: '100%', display:'flex', alignItems:'center'}} variant='body1'>
           Comprobante de Domicilio
           </Typography>
           <TextField id="outlined-basic" label="Outlined" variant="outlined" fullWidth sx={{marginRight: '20px'}}  />
-          <IconButton> <FileUploadIcon /> </IconButton>
+          <input type="file" style={{ display: 'none' }} id="fileUpload" onChange={handleFileUpload} />
+          <IconButton disabled={!isFormEnabled} onClick={() => document.getElementById('fileUpload').click()}>
+          <FileUploadIcon />
+          </IconButton>
         </Stack>
       
       </TabPanel>
@@ -241,33 +266,43 @@ export default function Editar_Regist() {
             Cara
           </Typography>
           <TextField id="outlined-basic" label="Outlined" variant="outlined" fullWidth sx={{marginRight: '20px'}} />
-          <IconButton> <FileUploadIcon /> </IconButton>
+          <input type="file" style={{ display: 'none' }} id="fileUpload" onChange={handleFileUpload} />
+          <IconButton disabled={!isFormEnabled} onClick={() => document.getElementById('fileUpload').click()}>
+          <FileUploadIcon />
+          </IconButton>
         </Stack>
         <Stack display="flex" flexDirection="row">
           <Typography sx={{width: '100%', display:'flex', alignItems:'center'}} variant='body1'>
             Iris
           </Typography>
           <TextField id="outlined-basic" label="Outlined" variant="outlined" fullWidth sx={{marginRight: '20px'}} />
-          <IconButton> <FileUploadIcon /> </IconButton>
+          <input type="file" style={{ display: 'none' }} id="fileUpload" onChange={handleFileUpload} />
+          <IconButton disabled={!isFormEnabled} onClick={() => document.getElementById('fileUpload').click()}>
+          <FileUploadIcon />
+          </IconButton>
         </Stack>
         <Stack display="flex" flexDirection="row">
           <Typography sx={{width: '100%', display:'flex', alignItems:'center'}} variant='body1'>
             Huellas
           </Typography>
           <TextField id="outlined-basic" label="Outlined" variant="outlined" fullWidth sx={{marginRight: '20px'}} />
-          <IconButton> <FileUploadIcon /> </IconButton>
+          <input type="file" style={{ display: 'none' }} id="fileUpload" onChange={handleFileUpload} />
+          <IconButton disabled={!isFormEnabled} onClick={() => document.getElementById('fileUpload').click()}>
+          <FileUploadIcon />
+          </IconButton>
         </Stack>
         <Stack display="flex" flexDirection="row">
           <Typography sx={{width: '100%', display:'flex', alignItems:'center'}} variant='body1'>
           Firma
           </Typography>
           <TextField id="outlined-basic" label="Outlined" variant="outlined" fullWidth sx={{marginRight: '20px'}}  />
-          <IconButton> <FileUploadIcon /> </IconButton>
+          <input type="file" style={{ display: 'none' }} id="fileUpload" onChange={handleFileUpload} />
+          <IconButton disabled={!isFormEnabled} onClick={() => document.getElementById('fileUpload').click()}>
+          <FileUploadIcon />
+          </IconButton>
         </Stack>
       </TabPanel>
-      <Button variant="contained"  color="success" onClick={handleClickOpen}>
-        Editar
-      </Button>
+      
       {open && (editClicked && (value === 0 || value === 1)) &&(
         <Dialog
           open={open}
@@ -292,6 +327,14 @@ export default function Editar_Regist() {
         </Dialog>
       )}
         </CardContent>
+        <Stack sx={{ display: 'flex', flexDirection:'row' }}>
+          <Button sx={{width:'50%'}} variant="contained" size='large'  color="primary" onClick={handleClickOpen}>
+            Editar 
+          </Button>
+          <Button sx={{width:'50%'}} variant="contained" size='large'  color="success" onClick={handleClickOpen}>
+            Guardar
+          </Button>
+        </Stack>
       </Card>
     </Box>
     </Container>
