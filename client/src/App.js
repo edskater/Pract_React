@@ -21,7 +21,6 @@ export default function App(){
   return(
     <BrowserRouter>
     <Navbar/>
-    
       <Routes>
           <Route path="/" element={<LogIn/>}/>
           <Route path="/home" element={<HOME/>}/>
@@ -38,10 +37,7 @@ export default function App(){
           <Route path="/Revocacion" element={<Revocacion/>}/>
           <Route path="/Consultar_Registro" element={<Consulta_registro/>}/>
           <Route path="/Admin/Regist_users" element={<Regist_users/>}/>
-
-
-      </Routes>
-      
+      </Routes>     
       <Footer/>
     </BrowserRouter>
   )

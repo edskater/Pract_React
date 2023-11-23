@@ -13,8 +13,9 @@ RUN npm install
 # Copy the rest of the application code to the working directory
 COPY . .
 
-# Expose port 4000 to have it mapped by the docker daemon
-EXPOSE 4000
+# Expose port 3000 to have it mapped by the docker daemon
+EXPOSE 3000
 
 # Define the command to run the application
-CMD ["npm", "run", "dev"]
+CMD ["npm", "start"]
+

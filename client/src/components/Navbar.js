@@ -10,7 +10,6 @@ import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import Divider from '@mui/material/Divider';
 import { useLocation } from 'react-router-dom';
-import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
 
 import Logout from '@mui/icons-material/Logout';

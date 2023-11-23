@@ -27,49 +27,7 @@ app.use((err, req, res, next) => {
       status: "error",
       message: err.message,
     });
-  });
-
-  // Ruta para detectar los periféricos
-app.get("/peripherals", (req, res) => {
-  const peripherals = detectPeripherals();
-  res.json(peripherals);
-});
-
-// Función para detectar los periféricos
-const detectPeripherals = () => {
-  const fingerprintReader = detectFingerprintReader();
-  const webcam = detectWebcam();
-  const irisCapture = detectIrisCapture();
-  const scanner = detectScanner();
-
-  return [fingerprintReader, webcam, irisCapture, scanner];
-};
-
-// Funciones para detectar los periféricos específicos
-const detectFingerprintReader = () => {
-  // Código para detectar el lector de huellas digitales
-  // ...
-  return { name: "Fingerprint Reader" };
-};
-
-const detectWebcam = () => {
-  // Código para detectar la cámara web
-  // ...
-  return { name: "Webcam" };
-};
-
-const detectIrisCapture = () => {
-  // Código para detectar la capturadora de iris
-  // ...
-  return { name: "Iris Capture" };
-};
-
-const detectScanner = () => {
-  // Código para detectar el escáner
-  // ...
-  return { name: "Scanner" };
-};
-  
+  });  
 
 app.listen(4000)
 console.log('Server on port 4000')
