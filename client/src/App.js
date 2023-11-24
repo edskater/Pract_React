@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Outlet, Navigate } from "react-router-dom";
 import Navbar from './components/Navbar'
 import Footer from "./components/Footer";
 import LogIn from "./components/Login";
@@ -16,6 +16,17 @@ import Revocacion from "./components/Revocacion";
 import Consulta_registro from "./components/Consulta_registro"
 import Regist_users from "./components/Admin/Regist_users";
 
+/* const PrivateRoute = () => {
+  const isAuth = false
+
+  return <>{isAuth ? <Outlet /> : <Navigate to='/' />}</>
+}
+
+const RestrictedRoute = () => {
+  const isAuth = false
+
+  return <>{!isAuth ? <Outlet /> : <Navigate to='/home' />}</>
+} */
 
 export default function App(){
   return(

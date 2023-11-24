@@ -5,11 +5,11 @@ const { SECRET } = require('../constants')
 
 exports.getUsers = async (req, res) => {
   try {
-    const { rows } = await db.query('select user_id, email from users')
+    const { rows } = await db.query('select * from usuarios')
 
     return res.status(200).json({
       success: true,
-      users: rows,
+      users: rows
     })
   } catch (error) {
     console.log(error.message)
@@ -17,14 +17,23 @@ exports.getUsers = async (req, res) => {
 }
 
 exports.register = async (req, res) => {
-  const { email, password } = req.body
+  const { password_hash, nombre, apellido_paterno, apellido_materno, email, estatus, created_by, created_at, rol } = req.body
   try {
-    const hashedPassword = await hash(password, 10)
+    const hashedPassword = await hash(password_hash, 10)
 
-    await db.query('insert into users(email,password) values ($1 , $2)', [
-      email,
-      hashedPassword,
+    const resId = await db.query('insert into usuarios(password_hash,nombre,apellido_paterno,apellido_materno,email,estatus,created_by,created_at) values($1,$2,$3,$4,$5,$6,$7,$8) returning id', [
+      hashedPassword, nombre, apellido_paterno, apellido_materno, email, estatus, created_by, created_at
     ])
+    
+    const userId = resId.rows[0].id;
+
+    if (userId) {
+      console.log('UserId: ',userId)
+      await db.query('insert into usuario_auth(usuario_id,auth_name) values($1,$2)', [userId, rol])
+      console.log('Ambas consultas completadas con éxito')
+    } else {
+      console.log('No se obtuvo un userId después de insertar en usuarios');
+    }
 
     return res.status(201).json({
       success: true,
@@ -42,7 +51,7 @@ exports.login = async (req, res) => {
   let user = req.user
 
   let payload = {
-    id: user.user_id,
+    id: user.id,
     email: user.email,
   }
 
