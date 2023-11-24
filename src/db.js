@@ -1,12 +1,12 @@
-const { Pool } = require('pg');
-const {db} = require('./conifg')
+const { Pool } = require('pg')
+const pool = new Pool({
+    user: 'postgres',
+    host: 'localhost',
+    database: 'firmadev',
+    password: 'naruto',
+    port: 5432
+})
 
-const pool   = new Pool({
-    user: db.user,
-    host: db.host,
-    database: db.database,
-    password: db.password,
-    port: db.port,
-});
-
-module.exports = pool;
+module.exports = {
+    query: (text, params) => pool.query(text, params),
+}
